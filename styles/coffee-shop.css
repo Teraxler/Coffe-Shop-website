@@ -1,0 +1,29 @@
+
+.header {
+  background: url(../images/coffee-shop-page/image\ 1.jpg);
+}
+
+.main__welcome {
+  background-image: url(../images/coffee-shop-page/image\ 7.png);
+}
+
+.main__opening-time {
+  background-image: url(../images/coffee-shop-page/image\ 4.jpg);
+}
+
+.main__menu {
+  background-image: url(../images/coffee-shop-page/image\ 6.jpg);
+}
+
+.main__customers {
+  background-image: url(../images/coffee-shop-page/top-view-bowls-with-coffee-beans-powder\ 1.jpg);
+}
+
+.main__location {
+  background-color: #e3d9d5;
+}
+
+.letter-spacing {
+  letter-spacing: -1.575px;
+}
+

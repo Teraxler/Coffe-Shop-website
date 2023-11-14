@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Irish+Grover&family=Lexend:wght@700&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles/coffee-shop.css" />
+    <!-- Header -->
+    <link rel="stylesheet" href="../styles/header.css" />
+    <!-- Footer -->
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <!-- Tailwindcss -->
+    <link rel="stylesheet" href="../styles/tailwind.css" />
+
+    <title>Coffee Shop</title>
+  </head>
+  <body class="bg-gray-950 text-white">
+    <!-- Header -->
+    <header
+      class="header h-[640px] lg:h-[786px] container mx-auto 2xl:bg-cover bg-no-repeat"
+    >
+      <div
+        class="header__top bg-black opacity-80 sm:opacity-100 z-10 fixed left-0 sm:left-auto w-screen sm:w-full sm:static sm:bg-transparent flex justify-between items-center lg:pl-4 lg:pr-5 xl:pr-43 xl:pl-22"
+      >
+        <!-- Header Logo -->
+        <div class="w-30 sm:w-[146px] sm:h-22">
+          <img
+            src="../images/logo/image 1.png"
+            width="146"
+            height="88"
+            alt=""
+          />
+        </div>
+        <div class="text-white mr-7 w-6 h-6 sm:hidden" id="toggle-menu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+            />
+          </svg>
+        </div>
+        <nav
+          class="bg-black opacity-80 sm:bg-transparent -left-64 z-10 sm:z-0 uppercase top-[73px]
+           duration-500 h-screen sm:h-auto fixed sm:static p-2 sm:p-0 w-52 sm:w-full 
+           lg:w-auto pt-4 sm:pt-0 font-semibold text-base lg:text-lg xl:text-xl"
+          id="menu"
+          data-display=""
+        >
+          <ul
+            class="flex gap-5 flex-col sm:flex-row justify-start sm:justify-end lg:justify-between 
+            sm:items-center ml-8 pr-5 sm:h-[103px] lg:w-[600px] xl:w-190"
+            id="menu-items__container"
+          >
+            <!-- Menu Items -->
+          </ul>
+        </nav>
+      </div>
+      <div class="flex h-[538px] lg:h-[683px] items-center">
+        <div
+          class="flex flex-col items-start gap-9 xl:gap-[50px] mx-7 sm:ml-16 lg:ml-20 xl:ml-30"
+        >
+          <div
+            class="flex flex-col w-auto sm:w-[400px] lg:w-[621px] gap-4 sm:gap-3 xl:gap-0"
+          >
+            <h2
+              class="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase"
+            >
+              fresh coffee in the morning
+            </h2>
+            <p
+              class="font-normal text-base lg:text-lg xl:text-[22px] capitalize"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+          <button
+            class="w-32 sm:w-36 md:w-52 lg:w-60 xl:w-[330px] h-9 sm:h-10 md:h-12 lg:h-16 xl:h-22 shadow-lg bg-[#B77E66] rounded-xl text-sm ms:text-base lg:text-xl xl:text-2xl uppercase lg:font-semibold xl:font-bold"
+          >
+            Order now
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- Main -->
+    <main class="container mx-auto">
+      <!-- Welcome -->
+      <section
+        class="main__welcome h-[588px] lg:h-[655px] bg-right justify-center sm:justify-end sm:bg-center xl:bg-cover bg-no-repeat flex items-center"
+      >
+        <div
+          class="flex flex-col gap-5 lg:gap-[30px] xl:mr-16 2xl:mr-[197px] ml-7 md:ml-0 w-[306px] md:w-96 lg:w-[474px] mr-7 lg:mr-10"
+        >
+          <h3
+            class="text-primary-800 text-3xl lg:text-[35px] font-inter letter-spacing font-semibold"
+          >
+            Welcome to Bartons incredibly
+          </h3>
+          <p
+            class="text-primary-700 font-inter text-lg sm:text-lg lg:text-[21px]"
+          >
+            Your best local coffee. In addition to delicious sandwiches and
+            cakes and hot dish of the day,
+          </p>
+          <button
+            class="bg-primary-100 w-32 h-9 sm:w-40 lg:w-[180px] sm:h-11 flex justify-center items-center rounded-xl self-end text-white font-medium text-sm sm:text-[15px] lg:text-2xl"
+          >
+            View more
+          </button>
+        </div>
+      </section>
+      <!-- Opening Time -->
+      <section
+        class="main__opening-time h-80 lg:h-[438px] bg-cover bg-no-repeat flex flex-wrap justify-around items-center w-full font-irish-grover"
+      >
+        <div
+          class="bg-primary-900 text-white ml-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl w-52 sm:w-64 md:w-72 lg:w-96 xl:w-[534px] h-12 sm:h-14 md:h-16 lg:h-32 xl:h-[147px] flex justify-center items-center rounded-xl"
+        >
+          <p>Opening Hours</p>
+        </div>
+        <div
+          class="flex justify-center sm:justify-start gap-20 w-80 lg:justify-start lg:w-[434px] text-white text-lg md:text-xl lg:text-3xl xl:text-4xl"
+        >
+          <div class="flex flex-col gap-25px">
+            <p>
+              Mon-Thu <br />
+              08:00-18:00
+            </p>
+            <p>
+              Fri <br />
+              08:00-19:00
+            </p>
+          </div>
+          <div class="flex flex-col gap-25px">
+            <p>
+              Sun <br />
+              9:00-18:00
+            </p>
+            <p>
+              Sat <br />
+              9:00-18:00
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Our Menu -->
+      <section
+        class="main__menu h-[690px] md:h-[760px] lg:h-[819px] bg-cover bg-no-repeat"
+      >
+        <h3
+          class="text-center text-3xl sm:text-4xl md:text-[50px] font-poppins text-primary-300 pt-10 xl:pt-[83px] md:mb-7 lg:mb-9 capitalize"
+        >
+          Our Menu
+        </h3>
+        <div>
+          <h5
+            class="font-semibold text-xl sm:text-2xl xl:text-3xl text-primary-200 underline decoration-[3px] ml-[71px] md:ml-[109px] lg:ml-[188px]"
+          >
+            Coffee
+          </h5>
+          <section
+            class="flex flex-wrap container justify-center pt-10 absolute"
+          >
+            <div
+              class="bg-primary-10 left-0 hover:left-1 hover:outline-white outline-none outline outline-[3px] outline-offset-[3px] duration-300 w-9 xs:w-10 md:w-[50px] h-9 xs:h-10 md:h-[50px] flex items-center justify-center rounded-full relative top-[217px]"
+              id="before-products"
+              aria-hidden="true"
+            >
+              <svg
+                class="w-[15.12px] xs:w-[16.8px] md:w-auto"
+                xmlns="http://www.w3.org/2000/svg"
+                width="21"
+                height="35"
+                viewBox="0 0 21 35"
+                fill="none"
+              >
+                <path
+                  d="M20.5611 30.5125L7.8526 17.2875L20.5611 4.06257L16.6486 0L0 17.2875L16.6486 34.5751L20.5611 30.5125Z"
+                  fill="#C08267"
+                />
+              </svg>
+            </div>
+            <div
+              class="flex justify-center w-[230px] xs:basis-[466px] sm:w-[465px] md:w-auto gap-4 2xl:gap-10 md:gap-7 mx-2 xs:mx-3 2xl:mx-5"
+              id="products-container"
+            >
+              <!-- Products -->
+            </div>
+            <div
+              class="bg-primary-10 right-0 hover:right-1 hover:outline-white outline-none outline outline-[3px] outline-offset-[3px] duration-300 w-9 xs:w-10 md:w-[50px] h-9 xs:h-10 md:h-[50px] flex items-center justify-center rounded-full relative top-[217px]"
+              id="next-products"
+            >
+              <svg
+                class="w-[15.12px] xs:w-[16.8px] md:w-auto"
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="35"
+                viewBox="0 0 22 35"
+                fill="none"
+              >
+                <path
+                  d="M0.709454 30.5801L13.4179 17.3552L0.709454 4.1302L4.62188 0.067627L21.2705 17.3552L4.62188 34.6427L0.709454 30.5801Z"
+                  fill="#C08267"
+                />
+              </svg>
+            </div>
+          </section>
+        </div>
+      </section>
+      <!-- Customers -->
+      <section
+        class="main__customers h-[520px] md:h-[609px] bg-cover bg-no-repeat font-lexend pt-8 md:pt-20"
+      >
+        <h5
+          class="text-white font-medium lg:font-semibold xl:font-bold text-2xl sm:text-3xl lg:text-4xl xl:text-[40px] leading-[60px] text-center"
+        >
+          What our Customers
+        </h5>
+        <section
+          class="container flex justify-center gap-4 md:gap-8 absolute px-7 pt-14 md:pt-[70px] lg:px-8"
+          data-ride="carousel"
+          id="comments-container"
+        >
+          <!-- Comments -->
+        </section>
+        <div
+          class="w-full flex justify-center top-96 sm:top-96 md:top-100 lg:top-[415px] xl:top-[405px] relative"
+        >
+          <div class="w-16 h-[11px]" id="comments-pagination">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="11"
+              viewBox="0 0 64 11"
+              fill="none"
+            >
+              <circle
+                cx="5.5"
+                cy="5.5"
+                r="5.5"
+                fill="#8C8C8C"
+                class="comments-navigation__active"
+                id="1"
+              />
+              <circle cx="32.5" cy="5.5" r="5.5" fill="white" id="2" />
+              <circle cx="58.5" cy="5.5" r="5.5" fill="white" id="3" />
+            </svg>
+          </div>
+        </div>
+      </section>
+      <!-- Location -->
+      <section
+        class="main__location w-full h-[542px] flex justify-center items-center"
+      >
+        <div
+          class="border-[#795341] border border-y-8 border-x-[11px] w-[1363px] h-[374px] mx-7"
+        >
+          <iframe
+            class="w-full h-full"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.704328140545!2d-0.07502892314247431!3d51.50029311122219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603473c8e9a19%3A0x22130a8cae81dd7c!2s25%20Dockhead%2C%20London%20SE1%202BS%2C%20UK!5e0!3m2!1sen!2s!4v1697285322956!5m2!1sen!2s"
+            width="1363"
+            height="374"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="footer bg-center container bg-cover bg-no-repeat lg:text-lg xl:text-xl mx-auto text-white"
+    >
+      <div class="footer-bg-color w-full h-full flex flex-col items-center">
+        <div
+          class="flex mx-7 sm:mx-auto flex-col-reverse md:flex-row h-min gap-8 md:gap-20 lg:gap-28 xl:gap-[166px] mt-10 lg:mt-43"
+        >
+          <div>
+            <ul
+              class="uppercase flex flex-col lg:gap-4 xl:gap-[18px] tracking-[2.3px]"
+              id="footer-nav-items__container"
+            >
+              <!-- Footer Nav Items -->
+            </ul>
+          </div>
+          <div>
+            <h6>CONTACT</h6>
+            <address class="w-auto sm:w-[289px]">
+              <a
+                class="w-full md:my-[18px] capitalize block text-[19px]"
+                href="https://maps.app.goo.gl/aBmnW3e3bQUe5yvX9"
+                >25 Dockhead, London SE1 2BS</a
+              >
+              <a class="underline block" href="tel:+102071313535"
+                >tel:(020) 7131 3535</a
+              >
+            </address>
+          </div>
+          <div
+            class="w-[210px] h-[130px] md:w-32 md:h-22 lg:w-[239px] lg:h-[155px]"
+          >
+            <img
+              src="../images/logo/image 1.png"
+              width="239"
+              height="155"
+              alt="logo"
+            />
+          </div>
+        </div>
+        <p
+          class="text-xs sm:text-base md:text-base mx-7 mt-12 md:mt-20 lg:mt-38"
+        >
+          © 2023 Copyright. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script
+      type="module"
+      defer
+      src="../scripts/coffee-shop/products.js"
+    ></script>
+    <script
+      type="module"
+      defer
+      src="../scripts/coffee-shop/comments.js"
+    ></script>
+    <script type="module" defer src="../scripts/footer.js"></script>
+    <script type="module" defer src="../scripts/menu.js"></script>
+  </body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <!-- Tailwindcss -->
+    <link rel="stylesheet" href="../styles/tailwind.css" />
+    <!-- Header Style -->
+    <link rel="stylesheet" href="../styles/header.css" />
+    <!-- Footer Style -->
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../styles/about-page.css" />
+    <title>Coffee Shop-About</title>
+  </head>
+  <body>
+    <!-- Alert -->
+    <div
+      class="fixed z-10 text-xs md:text-base shadow-sm duration-300 flex px-3 py-1 items-center bg-white rounded-md -right-100 top-24"
+    >
+      <span
+        class="text-sm sm:text-base md:text-lg capitalize"
+        id="alert-message"
+      >
+        <!-- Alert Message -->
+      </span>
+    </div>
+    <!-- Header -->
+    <header
+      class="header text-white container mx-auto bg-center bg-cover bg-no-repeat"
+    >
+      <div
+        class="bg-[#1E1511E8] opacity-80 sm:opacity-100 z-20 fixed w-screen left-0 sm:left-auto sm:w-full sm:static flex justify-between items-center lg:pl-4 lg:pr-5 xl:pr-43 xl:pl-22"
+      >
+        <!-- Header Logo -->
+        <div class="w-30 sm:w-[146px] sm:h-22">
+          <img
+            src="../images/logo/image 1.png"
+            width="146"
+            height="88"
+            alt=""
+          />
+        </div>
+        <div class="text-white mr-7 w-6 h-6 sm:hidden" id="toggle-menu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+            />
+          </svg>
+        </div>
+        <nav
+          class="bg-black opacity-80 sm:bg-transparent -left-64 z-10 sm:z-0 uppercase top-[73px] duration-500 h-screen sm:h-auto fixed sm:static p-2 sm:p-0 w-52 sm:w-full lg:w-auto pt-4 sm:pt-0 font-normal sm:font-medium xl:font-semibold text-base lg:text-lg xl:text-xl"
+          id="menu"
+          data-display=""
+        >
+          <ul
+            class="flex gap-5 flex-col sm:flex-row justify-start sm:justify-end lg:justify-between sm:items-center ml-8 pr-5 sm:h-[103px] lg:w-[600px] xl:w-190"
+            id="menu-items__container"
+          >
+            <!-- Footer Navigation Links -->
+          </ul>
+        </nav>
+      </div>
+
+    </header>
+    <!-- Main -->
+    <main class="text-[#AF6343] container mx-auto font-medium pt-15">
+      <section class="flex flex-col xs:flex-row gap-7 lg:gap-20">
+        <div class="flex flex-col mx-7 xs:ml-8 md:ml-10 lg:ml-8 2xl:ml-16 gap-5 lg:gap-[30px] xs:w-2/5 md:w-1/3"
+        >
+          <div
+            class="flex flex-col gap-3 lg:gap-5 pt-5 xs:pt-[100px] max-w-sm xs:w-full mx-auto xs:m-0"
+          >
+            <h3
+              class="flex items-center justify-center xs:justify-start text-lg lg:text-xl"
+            >
+              STORE FEEDBACK
+            </h3>
+            <p class="text-xs capitalize text-center xs:text-start">
+              Tell us about an in-store experience, inquire about hiring
+              opportunities, or ask about an order placed through our online
+              order ahead app.
+            </p>
+          </div>
+          <div
+            class="flex flex-col gap-3 lg:gap-5 max-w-sm xs:w-full mx-auto xs:m-0"
+          >
+            <h3
+              class="flex items-center justify-center xs:justify-start text-lg lg:text-xl"
+            >
+              STORE FEEDBACK
+            </h3>
+            <p class="text-xs capitalize text-center xs:text-start">
+              Tell us about an in-store experience, inquire about hiring
+              opportunities, or ask about an order placed through our online
+              order ahead app.
+            </p>
+          </div>
+          <div
+            class="flex items-center justify-center xs:justify-start gap-2 max-w-sm xs:w-full mx-auto xs:m-0 text-lg lg:text-xl"
+          >
+            <div class="w-4">
+              <svg
+                width="16"
+                height="15"
+                viewBox="0 0 16 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  id="Vector"
+                  d="M3.21778 6.32549C4.49778 8.62345 6.56 10.4992 9.07556 11.6766L11.0311 9.89017C11.2711 9.67093 11.6267 9.59785 11.9378 9.69529C12.9333 9.99573 14.0089 10.1581 15.1111 10.1581C15.6 10.1581 16 10.5235 16 10.9701V13.804C16 14.2506 15.6 14.616 15.1111 14.616C6.76444 14.616 0 8.43669 0 0.812001C0 0.3654 0.4 0 0.888889 0H4C4.48889 0 4.88889 0.3654 4.88889 0.812001C4.88889 1.827 5.06667 2.8014 5.39556 3.71084C5.49333 3.99504 5.42222 4.31172 5.17333 4.53908L3.21778 6.32549Z"
+                  fill="#AF6343"
+                />
+              </svg>
+            </div>
+            <a href="tel:+15125885720">512-588-5720</a>
+          </div>
+          <div
+            class="flex flex-col gap-3 lg:gap-5 max-w-sm xs:w-full mx-auto xs:m-0"
+          >
+            <h3
+              class="flex items-center text-lg lg:text-xl justify-center xs:justify-start"
+            >
+              STORE FEEDBACK
+            </h3>
+            <p class="text-xs capitalize text-center xs:text-start">
+              Tell us about an in-store experience, inquire about hiring
+              opportunities, or ask about an order placed through our online
+              order ahead app.
+            </p>
+          </div>
+        </div>
+        <div
+          class="bg-img bg-no-repeat bg-bottom flex flex-col gap-10 text-xs xs:text-base md:text-xl md:w-2/3 mx-7 xs:ml-0 xs:mr-12 md:mr-8 lg:mr-16 2xl:mr-35 pb-20"
+          id="form-container"
+        >
+          <h2
+            class="capitalize font-bold text-3xl md:text-[40px] xs:pl-10 md:pl-15"
+          >
+            Contact us
+          </h2>
+          <div>
+            <input
+              class="w-full h-12 md:h-16 lg:h-20 px-4 sm:px-6 lg:px-9 md:py-5 lg:py-[26px] duration-75 outline-none focus:border-4 border border-[#ba6e4e87] rounded-xl bg-[#fffefe94]"
+              type="text"
+              placeholder="Name *"
+              autofocus
+              required
+              minlength="4"
+              maxlength="30"
+              name=""
+              id="input-name"
+            />
+          </div>
+          <div>
+            <input
+              class="w-full h-12 md:h-16 lg:h-20 px-4 sm:px-6 lg:px-9 md:py-5 lg:py-[26px] duration-75 outline-none focus:border-4 border border-[#ba6e4e87] rounded-xl bg-[#fffefe94]"
+              type="email"
+              placeholder="Email *"
+              required
+              minlength="4"
+              maxlength="40"
+              name=""
+              id="input-email"
+            />
+          </div>
+          <div>
+            <input
+              class="w-full h-12 md:h-16 lg:h-20 px-4 sm:px-6 lg:px-9 md:py-5 lg:py-[26px] duration-75 outline-none focus:border-4 border border-[#ba6e4e87] rounded-xl bg-[#fffefe94]"
+              type="text"
+              placeholder="What is the subject of your message?"
+              minlength="4"
+              maxlength="30"
+              name=""
+              id="input-subject"
+            />
+          </div>
+          <div>
+            <textarea
+              class="w-full md:h-48 lg:h-64 px-4 sm:px-6 lg:px-9 py-2 md:py-5 lg:py-[26px] duration-75 outline-none focus:border-4 border border-[#ba6e4e87] rounded-xl bg-[#fffefe94]"
+              name=""
+              id="input-message"
+              required
+              cols="30"
+              rows="10"
+              placeholder="Message"
+            ></textarea>
+          </div>
+          <div>
+            <button
+              class="px-4 md:px-6 lg:px-9 py-2 lg:py-3 rounded-lg duration-200 hover:opacity-100 opacity-90 bg-[#ba6e4ed1] text-white"
+              type="submit"
+              id="btn-submit"
+            >
+              Send Us An Email
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+        <!-- Footer -->
+    <footer
+      class="footer bg-center container bg-cover bg-no-repeat lg:text-lg xl:text-xl mx-auto text-white"
+    >
+      <div class="footer-bg-color w-full h-full flex flex-col items-center">
+        <div
+          class="flex mx-7 sm:mx-auto flex-col-reverse md:flex-row h-min gap-8 md:gap-20 lg:gap-28 xl:gap-[166px] mt-10 lg:mt-43"
+        >
+          <div>
+            <ul
+              class="uppercase flex flex-col lg:gap-4 xl:gap-[18px] tracking-[2.3px]"
+              id="footer-nav-items__container"
+            >
+              <!-- Footer Nav Items -->
+            </ul>
+          </div>
+          <div>
+            <h6>CONTACT</h6>
+            <address class="w-auto sm:w-[289px]">
+              <a
+                class="w-full md:my-[18px] capitalize block text-[19px]"
+                href="https://maps.app.goo.gl/aBmnW3e3bQUe5yvX9"
+                >25 Dockhead, London SE1 2BS</a
+              >
+              <a class="underline block" href="tel:+102071313535"
+                >tel:(020) 7131 3535</a
+              >
+            </address>
+          </div>
+          <div
+            class="w-[210px] h-[130px] md:w-32 md:h-22 lg:w-[239px] lg:h-[155px]"
+          >
+            <img
+              src="../images/logo/image 1.png"
+              width="239"
+              height="155"
+              alt="logo"
+            />
+          </div>
+        </div>
+        <p
+          class="text-xs sm:text-base md:text-base mx-7 mt-12 md:mt-20 lg:mt-38"
+        >
+          © 2023 Copyright. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+    
+    <script type="module" src="../scripts/footer.js"></script>
+    <script type="module" src="../scripts/menu.js"></script>
+    <script type="module" src="../scripts/about-page/form.js"></script>
+  </body>
+</html>

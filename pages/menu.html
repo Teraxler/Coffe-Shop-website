@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&family=Praise&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../styles/tailwind.css" />
+    <!-- Header -->
+    <link rel="stylesheet" href="../styles/header.css" />
+    <!-- Footer -->
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <!-- Main -->
+    <link rel="stylesheet" href="../styles/menu-page.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="header text-white container mx-auto bg-center bg-cover bg-no-repeat"
+    >
+      <div
+        class="header__top opacity-80 sm:opacity-100 z-20 fixed w-full sm:static sm:bg-transparent flex justify-between items-center lg:pl-4 lg:pr-5 xl:pr-43 xl:pl-22"
+      >
+        <!-- Header Logo -->
+        <div class="w-30 sm:w-[146px] sm:h-22">
+          <img
+            src="../images/logo/image 1.png"
+            width="146"
+            height="88"
+            alt=""
+          />
+        </div>
+        <div class="text-white mr-7 w-6 h-6 sm:hidden" id="toggle-menu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+            />
+          </svg>
+        </div>
+        <nav
+          class="bg-black opacity-80 sm:bg-transparent -left-64 z-10 sm:z-0 uppercase top-[73px] duration-500 h-screen sm:h-auto fixed sm:static p-2 sm:p-0 w-52 sm:w-full lg:w-auto pt-4 sm:pt-0 font-normal sm:font-medium xl:font-semibold text-base lg:text-lg xl:text-xl"
+          id="menu"
+          data-display=""
+        >
+          <ul
+            class="flex gap-5 flex-col sm:flex-row justify-start sm:justify-end lg:justify-between sm:items-center ml-8 pr-5 sm:h-[103px] lg:w-[600px] xl:w-190"
+            id="menu-items__container"
+          >
+            <!-- Footer Navigation Links -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Main -->
+    <main
+      class="main pb-190 container mx-auto text-[#1F0C0CCC] bg-no-repeat bg-cover"
+    >
+      <h2
+        class="font-extrabold text-[#752900] tracking-widest text-center text-2xl pt-[228px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase"
+      >
+        Menus
+      </h2>
+      <section
+        class="mx-10 md:mx-14 lg:mx-20 xl:mx-22 mt-21 flex flex-col xs:flex-row"
+      >
+        <div
+          class="xs:w-1/2 xs:border-r border-dotted border-black xs:pr-8 md:pr-9 lg:pr-12 xl:pr-14 gap-6 grid"
+        >
+          <section>
+            <h3 class="text-4xl lg:text-[40px] border-t border-black uppercase">
+              Coffee
+            </h3>
+            <div
+              class="border-t border-dotted border-black md:px-6 lg:px-9 py-9"
+            >
+              <ul class="flex flex-col gap-8" id="coffees-container">
+                <!-- Coffees -->
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3 class="text-4xl lg:text-[40px] border-t border-black uppercase">
+              Smoothies
+            </h3>
+            <div
+              class="border-t border-dotted border-black md:px-6 lg:px-9 py-9"
+            >
+              <ul class="flex flex-col gap-8" id="smoothies-container">
+                <!-- Smoothies -->
+              </ul>
+            </div>
+          </section>
+        </div>
+        <div class="xs:w-1/2 xs:pl-8 md:pl-9 lg:pl-12 xl:pl-14 gap-6 grid">
+          <section id="">
+            <h3 class="text-4xl lg:text-[40px] border-t border-black uppercase">
+              Tea
+            </h3>
+            <div
+              class="border-t border-dotted border-black md:px-6 lg:px-9 py-9"
+            >
+              <ul class="flex flex-col gap-8" id="teas-container">
+                <!-- Teas -->
+              </ul>
+            </div>
+          </section>
+        </div>
+      </section>
+      <div
+        class="grid grid-rows-7 grid-cols-9 w-screen pt-20 px-10 xs:p-0 xs:w-[248px] md:w-[291px] lg:w-[366px] xl:w-[495px] 2xl:w-[602px] float-right relative xs:-top-56 lg:-top-80 xs:-left-5 sm:-left-10 md:-left-14 lg:-left-22"
+      >
+        <img
+          class="row-start-1 row-end-6 col-start-1 col-end-9 z-10"
+          src="../images/menu-page/image-19.png"
+          alt=""
+        />
+        <img
+          class="row-start-2 row-end-7 col-start-2 col-end-10"
+          src="../images/menu-page/image-20.png"
+          alt=""
+        />
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="footer bg-center container mx-auto bg-cover bg-no-repeat lg:text-lg xl:text-xl text-white"
+    >
+      <div class="footer-bg-color w-full h-full flex flex-col items-center">
+        <div
+          class="flex mx-7 sm:mx-auto flex-col-reverse md:flex-row h-min gap-8 md:gap-20 lg:gap-28 xl:gap-[166px] mt-10 lg:mt-43"
+        >
+          <div>
+            <ul
+              class="uppercase flex flex-col lg:gap-4 xl:gap-[18px] tracking-[2.3px]"
+              id="footer-nav-items__container"
+            >
+              <!-- Footer Nav Items -->
+            </ul>
+          </div>
+          <div>
+            <h6>CONTACT</h6>
+            <address class="w-auto sm:w-[289px]">
+              <a
+                class="w-full md:my-[18px] capitalize block text-[19px]"
+                href="https://maps.app.goo.gl/aBmnW3e3bQUe5yvX9"
+                >25 Dockhead, London SE1 2BS</a
+              >
+              <a class="underline block" href="tel:+102071313535"
+                >tel:(020) 7131 3535</a
+              >
+            </address>
+          </div>
+          <div
+            class="w-[210px] h-[130px] md:w-32 md:h-22 lg:w-[239px] lg:h-[155px]"
+          >
+            <img
+              src="../images/logo/image 1.png"
+              width="239"
+              height="155"
+              alt="logo"
+            />
+          </div>
+        </div>
+        <p
+          class="text-xs sm:text-base md:text-base mb-6 mx-7 mt-12 md:mt-20 lg:mt-38"
+        >
+          © 2023 Copyright. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script type="module" src="../scripts/footer.js"></script>
+    <script type="module" src="../scripts/menu.js"></script>
+    <script type="module" src="../scripts/menus/products.js"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+.header {
+    background-image: url(../images/footer/image-9.jpg);
+}
+
+.header__top {
+    background-color: #1d1714d6;
+}
+
+.main {
+    background-image: url(../images/menu-page/main-background.png);
+    /* height: 1970px; */
+}
+

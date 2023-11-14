@@ -1,0 +1,19 @@
+.header {
+  background-image: url(../images/products-page/image\ 10.jpg);
+}
+
+.main__products {
+  background-image: url(../images/products-page/image-17.jpg);
+  position: relative;
+  z-index: 0;
+}
+
+.main__products::before {
+  content: "";
+  background: rgba(220, 214, 214, 0.71);
+  width: 100%;
+  height: 100%;
+  filter: blur(2px);
+  position: absolute;
+  z-index: -1;
+}
