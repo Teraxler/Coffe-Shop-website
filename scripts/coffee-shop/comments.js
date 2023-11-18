@@ -6,6 +6,7 @@ let $ = document,
 
 // Initial value
 startCommentId = 1;
+countCommentsPage = countCommentsPageFunc();
 
 // Get elements
 const commentsPagination = $.getElementById("comments-pagination");
@@ -121,18 +122,15 @@ function renderCommentsPage(commentsList) {
 window.addEventListener("DOMContentLoaded", () => {
   renderCommentsPage(commentsList);
 
-  setInterval(() =>{
-    if (startCommentId <= (commentsList.length - countCommentsPage)) {
-      // setStartCommentId(startCommentId + 1)
-      startCommentId++
+  setInterval(() => {
+    if (startCommentId <= commentsList.length - countCommentsPage) {
+      startCommentId++;
     } else {
-      startCommentId = 1 // New brgin
-      // setStartCommentId(1) // New begin
+      startCommentId = 1; // New begin
     }
 
     renderCommentsPage(commentsList);
-  }, 2000)
-
+  }, 5000);
 });
 
 commentsPagination.addEventListener("click", (event) => {
@@ -150,7 +148,7 @@ commentsPagination.addEventListener("click", (event) => {
   }
 
   if (newStartCommentId) {
-    startCommentId = newStartCommentId
+    startCommentId = newStartCommentId;
     // setStartCommentId(newStartCommentId);
     renderCommentsPage(commentsList);
   }
