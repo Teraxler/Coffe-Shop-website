@@ -1,5 +1,3 @@
-"use strict";
-
 import { comments as commentsList } from "../data-base.js";
 
 let $ = document,
@@ -9,18 +7,18 @@ let $ = document,
 // Initial value
 startCommentId = 1;
 
-// Get Elements
+// Get elements
 const commentsPagination = $.getElementById("comments-pagination");
 
-// Get Elements
+// Get elements
 function getCommentsContainer() {
   return $.getElementById("comments-container");
 }
 
 // Set
-function setStartCommentId(newValue) {
-  startCommentId = newValue;
-}
+// function setStartCommentId(newValue) {
+//   startCommentId = newValue;
+// }
 
 // Calculate
 function calculateEndPoint(startPoint, countInPgae) {
@@ -122,6 +120,19 @@ function renderCommentsPage(commentsList) {
 
 window.addEventListener("DOMContentLoaded", () => {
   renderCommentsPage(commentsList);
+
+  setInterval(() =>{
+    if (startCommentId <= (commentsList.length - countCommentsPage)) {
+      // setStartCommentId(startCommentId + 1)
+      startCommentId++
+    } else {
+      startCommentId = 1 // New brgin
+      // setStartCommentId(1) // New begin
+    }
+
+    renderCommentsPage(commentsList);
+  }, 2000)
+
 });
 
 commentsPagination.addEventListener("click", (event) => {
@@ -139,7 +150,8 @@ commentsPagination.addEventListener("click", (event) => {
   }
 
   if (newStartCommentId) {
-    setStartCommentId(newStartCommentId);
+    startCommentId = newStartCommentId
+    // setStartCommentId(newStartCommentId);
     renderCommentsPage(commentsList);
   }
 });

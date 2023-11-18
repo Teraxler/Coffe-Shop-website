@@ -30,8 +30,9 @@
       <span
         class="text-[#F54848] text-sm sm:text-base md:text-lg"
         id="alert-message"
-        >Please enter a number between (0, 50)</span
       >
+        <!-- Alert Message -->
+      </span>
     </div>
     <!-- Header -->
     <header
@@ -109,6 +110,7 @@
       <section class="mx-7 md:mx-0">
         <h3
           class="text-lg sm:text-xl md:text-2xl lg:text-[32px] text-[#291D15] font-bold text-center pt-22"
+          id="date-container"
         >
           Booking Coffee - on Monday, April 24, 2023
         </h3>
@@ -121,14 +123,14 @@
           >
             <div class="flex justify-between items-center">
               <h5
-                class="text-lg sm:text-xl lg:text-2xl"
+                class="font-black text-lg sm:text-xl lg:text-2xl"
                 id="month-&-year-container"
               >
-                May 2023
+                <!-- Moth & Year -->
               </h5>
               <div class="flex gap-2">
                 <div
-                  class="p-2 sm:p-4 hover:bg-[#D5D4DF] rounded-full"
+                  class="p-2 sm:p-4 hover:bg-[#D5D4DF] duration-200 rounded-full"
                   id="pervious-month__btn"
                 >
                   <svg
@@ -138,7 +140,7 @@
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g id="Frame 10">
+                    <g id="">
                       <path
                         id="Vector 2 (Stroke)"
                         fill-rule="evenodd"
@@ -150,7 +152,7 @@
                   </svg>
                 </div>
                 <div
-                  class="p-2 sm:p-4 hover:bg-[#D5D4DF] rounded-full"
+                  class="p-2 sm:p-4 hover:bg-[#D5D4DF] duration-200 rounded-full"
                   id="next-month__btn"
                 >
                   <svg
@@ -173,7 +175,7 @@
                 </div>
               </div>
             </div>
-            <table class="xs:text-base" id="calendar__container">
+            <table class="font-inter tabular-nums" id="calendar__container">
               <!-- Calender -->
             </table>
           </div>
@@ -265,10 +267,11 @@
         </p>
       </div>
     </footer>
+
+    <script type="module" src="../scripts/menu.js"></script>
     <script type="module" src="../scripts/products/products.js"></script>
     <script type="module" src="../scripts/products/booking.js"></script>
     <script type="module" src="../scripts/products/calendar.js"></script>
-    <script type="module" src="../scripts/menu.js"></script>
     <script type="module" src="../scripts/footer.js"></script>
   </body>
 </html>

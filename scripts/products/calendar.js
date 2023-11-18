@@ -1,18 +1,27 @@
 import { persianNumbers } from "../data-base.js";
 
 let $ = document,
+  today,
+  thisYear,
   thisMonth,
   nameMonth,
-  thisYear,
-  today,
-  daysOfWeek,
-  nameWeekDays;
+  nameWeekDays,
+  fullNameDays;
 
 const btnNextMonth = getbtnNextMonth();
 const btnPerviousMonth = getbtnPerviousMonth();
 const calendarContainer = getCalendarContainer();
 
 nameWeekDays = ["Sa", "Su", "Mo", "Tu", "We", "Th", "Fr"];
+fullNameDays = [
+  "Friday",
+  "Saturday",
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+];
 nameMonth = [
   "Farvardin",
   "Ordibehesht",
@@ -29,12 +38,12 @@ nameMonth = [
 ];
 
 // Initial value
-daysOfWeek = 7;
 today = getToday();
 thisMonth = getThisMonth();
 thisYear = getThisYear();
+const daysOfWeek = 7;
 
-// Get Elements
+// Get elements
 function getbtnNextMonth() {
   return $.getElementById("next-month__btn");
 }
@@ -47,24 +56,16 @@ function getCalendarContainer() {
   return $.getElementById("calendar__container");
 }
 
-function getAlertElement() {
-  return $.getElementById("alert-message");
+// function getAlertElement() {
+//   return $.getElementById("alert-message");
+// }
+
+function getDateContainer() {
+  return $.getElementById("date-container");
 }
 
 function getMonthAndYearCountainer() {
   return $.getElementById("month-&-year-container");
-}
-
-function showAlertMessage(message) {
-  const alertContainer = getAlertElement();
-
-  alertContainer.innerHTML = message;
-
-  alertContainer.parentElement.style = "right: 0;";
-
-  setTimeout(() => {
-    alertContainer.parentElement.style = "right: -288px;";
-  }, 3000);
 }
 
 // Calculate
@@ -80,6 +81,18 @@ function calcCountDaysOfMonth(month) {
   }
 
   return daysOfMonth;
+}
+
+// Show day info
+function showDate() {
+  const container = getDateContainer();
+  let weekDay;
+
+  weekDay = calcWeekOfDay();
+
+  container.innerText = `Booking Coffee - on ${fullNameDays[weekDay]}, ${
+    nameMonth[thisMonth - 1]
+  } ${today}, ${thisYear}`;
 }
 
 function increaseThisMonth() {
@@ -113,6 +126,11 @@ function getToday() {
   return Number(today);
 }
 
+function calcWeekOfDay() {
+  let weekDay = today % daysOfWeek;
+  return Number(weekDay);
+}
+
 function getThisMonth() {
   const time = getDateNow();
 
@@ -138,7 +156,7 @@ function fixNumbers(number) {
 }
 
 // Create
-function createTableItem(number, isToday) {
+function createTableData(number, isToday) {
   let property;
 
   if (isToday) {
@@ -159,41 +177,41 @@ function createTableRow() {
 
   for (let i = 1; i <= daysOfMonth; i++) {
     isToday = i === today;
-    tableItems += createTableItem(i, isToday);
 
+    tableItems += createTableData(i, isToday);
     if (i % daysOfWeek === 0) {
       tableRow += `<tr>${tableItems}</tr>`;
+
       tableItems = "";
     }
   }
 
   tableRow += `<tr>${tableItems}</tr>`;
-
   return tableRow;
 }
 
 function createCalendar() {
   let tableRow = createTableRow();
-
   return tableRow;
 }
 
-function createHeaderCalendar() {
+function createTableHeader() {
   let items = "",
     tableRow;
 
   for (const nameDay of nameWeekDays) {
-    items += `<th class="text-center p-2 xs:p-3 lg:p-5">${nameDay}</th>`;
+    items += `<th class="font-semibold text-center p-2 xs:p-3 lg:p-5">${nameDay}</th>`;
   }
 
   tableRow = `<tr>${items}</tr>`;
   return tableRow;
 }
 
-// Change Value
+// Change value
 function changeToday(event) {
   if (event.target.id === "day") {
     today = Number(event.target.innerHTML);
+
     return true;
   }
 }
@@ -201,11 +219,11 @@ function changeToday(event) {
 // Render
 function renderCalnedar() {
   const calendarContainer = getCalendarContainer();
-  let calendar = createHeaderCalendar();
-  calendar += createCalendar();
+  let calendar = createTableHeader();
 
   renderInfoOfYear();
 
+  calendar += createCalendar();
   calendarContainer.innerHTML = calendar;
 }
 
@@ -215,27 +233,35 @@ function renderInfoOfYear() {
   infoOfYearContainer.innerHTML = `${nameMonth[thisMonth - 1]} ${thisYear}`;
 }
 
+// function saveToLocalStorage() {}
+
 // Events
 window.addEventListener("DOMContentLoaded", () => {
   renderCalnedar();
+  showDate();
 });
 
 btnNextMonth.addEventListener("click", () => {
   increaseThisMonth();
-
-  console.log(thisMonth);
   renderCalnedar();
+  showDate();
 });
 
 btnPerviousMonth.addEventListener("click", () => {
-  decreaseThisMonth();
+  if(thisMonth > getThisMonth() | thisYear > getThisYear()) {
+    decreaseThisMonth();
+    renderCalnedar();
+    showDate();
 
-  console.log(thisMonth);
-  renderCalnedar();
+    btnPerviousMonth.classList.add()
+  }
 });
 
 calendarContainer.addEventListener("click", (event) => {
   if (changeToday(event)) {
     renderCalnedar();
+    showDate();
   }
 });
+
+export { today, thisMonth, thisYear, getToday, getThisMonth, getThisYear };

@@ -111,12 +111,12 @@ function inputsValidation() {
 function showAlertMessage(message, isSuccessfull) {
   const alertElement = getAlertElement();
 
-  setColorAlert(isSuccessfull) 
+  setColorAlert(isSuccessfull);
 
-  alertElement.innerHTML = message;
+  alertElement.innerText = message;
   alertElement.parentElement.style.right = "0";
 
-  setTimerAlert(3000)
+  setTimerAlert(3000);
 }
 
 function setTimerAlert(seconds) {
@@ -160,8 +160,6 @@ btnSubmit.addEventListener("click", (event) => {
 
   if (inputsValidation()) {
     showAlertMessage("Sent", true);
-    window.
-    resiveInputsValue()
   }
 });
 

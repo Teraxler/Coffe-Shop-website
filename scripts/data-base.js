@@ -79,7 +79,7 @@ const products = [
 const comments = [
   {
     id: 1,
-    name: "Mrs Catherine White",
+    name: "Mrs Catherine White 1",
     gender: "female",
     photo: "../images/coffee-shop-page/ellipse 39.jpg",
     title: "As good as advertised",
@@ -88,7 +88,7 @@ const comments = [
   },
   {
     id: 2,
-    name: "Mrs Catherine White",
+    name: "Mrs Catherine White 2",
     gender: "female",
     photo: "../images/coffee-shop-page/ellipse 38.jpg",
     title: "As good as advertised",
@@ -97,7 +97,7 @@ const comments = [
   },
   {
     id: 3,
-    name: "Mrs Catherine White",
+    name: "Mrs Catherine White 3",
     gender: "female",
     photo: "../images/coffee-shop-page/ellipse 39.jpg",
     title: "As good as advertised",
@@ -106,7 +106,7 @@ const comments = [
   },
   {
     id: 4,
-    name: "Mrs Catherine White",
+    name: "Mrs Catherine White 4",
     gender: "female",
     photo: "../images/coffee-shop-page/ellipse 39.jpg",
     title: "As good as advertised",
@@ -115,7 +115,7 @@ const comments = [
   },
   {
     id: 5,
-    name: "Mrs Catherine White",
+    name: "Mrs Catherine White 5",
     gender: "female",
     photo: "../images/coffee-shop-page/ellipse 39.jpg",
     title: "As good as advertised",
@@ -124,7 +124,7 @@ const comments = [
   },
   {
     id: 6,
-    name: "Mr John White",
+    name: "Mr John White 6",
     gender: "male",
     photo: "../images/coffee-shop-page/ellipse 38.jpg",
     title: "As good as advertised",
