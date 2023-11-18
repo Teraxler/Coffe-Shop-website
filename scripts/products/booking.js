@@ -1,14 +1,26 @@
+console.time();
+
+import { today as selectedDay, thisMonth, thisYear } from "./calendar.js";
+import { thisMonth as selectedMonth } from "./calendar.js";
+import { thisYear as selectedYear } from "./calendar.js";
+
+import { getToday } from "./calendar.js";
+import { getThisMonth } from "./calendar.js";
+import { getThisYear } from "./calendar.js";
+
 let $ = document,
+  alertIntervalId,
   maxBookingCount;
 
 // Elements
 const btnPlus = getBtnPlus();
 const btnMinus = getBtnMinus();
 const bokkingInput = getBookingInput();
-const btnNext = getBtnNext()
+const btnNext = getBtnNext();
 
 // Initial value
 maxBookingCount = 50;
+alertIntervalId = null;
 
 // Get Elements
 function getBookingInput() {
@@ -32,16 +44,51 @@ function getBtnNext() {
 }
 
 // Alert
-function showAlertMessage(message) {
-  const alertContainer = getAlertElement();
+function showAlertMessage(message, isSuccessfull = false) {
+  const alertElement = getAlertElement();
 
-  alertContainer.innerHTML = message;
+  setColorAlert(isSuccessfull);
 
-  alertContainer.parentElement.style = "right: 0";
+  alertElement.innerText = message;
+  alertElement.parentElement.style.right = "0";
 
-  setTimeout(() => {
-    alertContainer.parentElement.style = "right: -400px";
-  }, 3000);
+  setTimerAlert(3000);
+}
+
+function setTimerAlert(seconds) {
+  const alertElement = getAlertElement();
+
+  if (alertIntervalId) {
+    clearInterval(alertIntervalId);
+  }
+
+  alertIntervalId = setTimeout(() => {
+    alertElement.parentElement.style.right = "-400px";
+    alertIntervalId = null;
+  }, seconds);
+}
+
+function setColorAlert(isSuccessfull) {
+  const alertElement = getAlertElement();
+
+  if (isSuccessfull) {
+    alertElement.style.color = "#5cb85c"; // Success color
+  } else {
+    alertElement.style.color = "#d9534f"; // Danger color
+  }
+}
+
+function checkCountCoffee(count) {
+  if (isNaN(count)) {
+    value = 0;
+    showAlertMessage("Please enter a number!!");
+  } else if (count < 0) {
+    value = 0;
+    showAlertMessage("Please enter a number between (0, 50)");
+  } else if (count > maxBookingCount) {
+    value = maxBookingCount;
+    showAlertMessage("Please enter a number between (0, 50)");
+  }
 }
 
 // Check
@@ -60,17 +107,53 @@ function checkCountCoffeeValue(value) {
   return value;
 }
 
+function isValidDate() {
+  let isValid = false;
+
+  if (
+    (selectedDay >= getToday()) &
+    (selectedMonth >= getThisMonth()) &
+    (selectedYear >= getThisYear())
+  ) {
+    isValid = true;
+  } else if (
+    (selectedMonth > getThisMonth()) &
+    (selectedYear >= getThisYear())
+  ) {
+    isValid = true;
+  } else if (selectedYear > getThisYear()) {
+    isValid = true;
+  }
+
+  return isValid;
+}
+
+// Local storage
+function setOnLocalStorage(key, value) {
+  localStorage.setItem(key, value);
+}
+
+function getOnLocalStorage(key) {
+  return localStorage.getItem(key);
+}
+
+// function checkDate() {
+//   const year =
+//   const month =
+//   const day =
+// }
+
 // Events
 btnPlus.addEventListener("click", () => {
   const bookingInput = getBookingInput();
-  let bookingCount = Number(bookingInput.value)
+  let bookingCount = Number(bookingInput.value);
 
   bookingInput.value = checkCountCoffeeValue(bookingCount + 1);
 });
 
 btnMinus.addEventListener("click", () => {
   const bookingInput = getBookingInput();
-  let bookingCount = Number(bookingInput.value)
+  let bookingCount = Number(bookingInput.value);
 
   bookingInput.value = checkCountCoffeeValue(bookingCount - 1);
 });
@@ -79,7 +162,38 @@ bokkingInput.addEventListener("blur", (event) => {
   event.target.value = checkCountCoffeeValue(event.target.value);
 });
 
-// btnNext.addEventListener("click", () => {
-//   const bookingInput = getBookingInput();
+btnNext.addEventListener("click", () => {
+  const bokkingInput = getBookingInput();
 
-// })
+  let countAndDayBooking = {
+    count: bokkingInput.value,
+    day: selectedDay,
+    month: selectedMonth,
+    year: selectedYear,
+  };
+
+  if (bokkingInput.value < 1) {
+    showAlertMessage("Please enter count you want reserve.", false);
+  } else {
+    if (isValidDate()) {
+      setOnLocalStorage("contBooking", JSON.stringify(countAndDayBooking));
+
+      showAlertMessage("Your booking is done.", true);
+    } else {
+      // localStorage.clear();
+
+      showAlertMessage("Please enter a valid day!", false);
+    }
+
+    // location.href = "https://coffee-shop/basket/"
+    // location.reload()
+    // location.search
+  }
+
+  console.warn(getOnLocalStorage("contBooking"));
+});
+
+console.timeEnd();
+
+console.log(window.location);
+console.log(window.history);
