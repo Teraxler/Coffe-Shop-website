@@ -113,7 +113,7 @@ function showAlertMessage(message, isSuccessfull) {
 
   setColorAlert(isSuccessfull);
 
-  alertElement.innerText = message;
+  alertElement.textContent = message;
   alertElement.parentElement.style.right = "0";
 
   setTimerAlert(3000);

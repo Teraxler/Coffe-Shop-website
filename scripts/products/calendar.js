@@ -56,10 +56,6 @@ function getCalendarContainer() {
   return $.getElementById("calendar__container");
 }
 
-// function getAlertElement() {
-//   return $.getElementById("alert-message");
-// }
-
 function getDateContainer() {
   return $.getElementById("date-container");
 }
@@ -90,7 +86,7 @@ function showDate() {
 
   weekDay = calcWeekOfDay();
 
-  container.innerText = `Booking Coffee - on ${fullNameDays[weekDay]}, ${
+  container.textContent = `Booking Coffee - on ${fullNameDays[weekDay]}, ${
     nameMonth[thisMonth - 1]
   } ${today}, ${thisYear}`;
 }
@@ -114,15 +110,18 @@ function decreaseThisMonth() {
 }
 
 function getDateNow() {
-  let time = new Date().toLocaleDateString("fa-ir");
+  let localDate, time;
+  localDate = new Date().toLocaleDateString("fa-ir");
 
-  return time.split("/"); // 1402/05/25 => ["1402", "05", "25"]
+  time = localDate.split("/"); // 1402/05/25 => ["1402", "05", "25"]
+
+  return { year: time[0], month: time[1], day: time[2] };
 }
 
 function getToday() {
-  const time = getDateNow();
+  let { day: today } = getDateNow();
 
-  let today = fixNumbers(time[2]);
+  today = fixNumbers(today);
   return Number(today);
 }
 
@@ -132,16 +131,16 @@ function calcWeekOfDay() {
 }
 
 function getThisMonth() {
-  const time = getDateNow();
+  let { month: thisMonth } = getDateNow();
 
-  let thisMonth = fixNumbers(time[1]);
-  return +thisMonth;
+  thisMonth = fixNumbers(thisMonth);
+  return Number(thisMonth);
 }
 
 function getThisYear() {
-  const time = getDateNow();
+  let { year: thisYear } = getDateNow();
 
-  let thisYear = fixNumbers(time[0]);
+  thisYear = fixNumbers(thisYear);
   return Number(thisYear);
 }
 
@@ -210,7 +209,7 @@ function createTableHeader() {
 // Change value
 function changeToday(event) {
   if (event.target.id === "day") {
-    today = Number(event.target.innerHTML);
+    today = Number(event.target.textContent);
 
     return true;
   }
@@ -248,12 +247,12 @@ btnNextMonth.addEventListener("click", () => {
 });
 
 btnPerviousMonth.addEventListener("click", () => {
-  if(thisMonth > getThisMonth() | thisYear > getThisYear()) {
+  if ((thisMonth > getThisMonth()) | (thisYear > getThisYear())) {
     decreaseThisMonth();
     renderCalnedar();
     showDate();
 
-    btnPerviousMonth.classList.add()
+    btnPerviousMonth.classList.add();
   }
 });
 
