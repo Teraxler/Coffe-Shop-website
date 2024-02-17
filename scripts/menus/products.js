@@ -15,17 +15,19 @@ function getSmoothiesContainer() {
 
 // Create
 function createMenuItem(item) {
+  let {name, description, price} = item
+  
   return `<li>
       <a class="flex items-start gap-14 xs:gap-6 md:gap-14 lg:gap-24 xl:gap-44 2xl:gap-[189px]" href="#">
         <div>
           <h6 class="text-[22px] font-medium leading-[33.66px] tracking-normal capitalize">
-            ${item.name}
+            ${name}
           </h6>
           <p class="text-xs font-praise leading-[18.36px] tracking-tight capitalize">
-            ${item.description}
+            ${description}
           </p>
         </div>
-        <span>${item.price}</span>
+        <span>$${price}</span>
       </a>
     </li>`;
 }

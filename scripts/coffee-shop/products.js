@@ -1,6 +1,6 @@
 "use strict";
 
-import { products as productsList } from "../data-base.js";
+import { homePageProducts as products } from "../data-base.js";
 
 let $ = document,
   startProductId,
@@ -8,7 +8,7 @@ let $ = document,
 
 // Get Elments
 const nextProductsBtn = $.getElementById("next-products");
-const beforeProductsBtn = $.getElementById("before-products");
+const perviousProductsBtn = $.getElementById("before-products");
 
 // Initial value
 startProductId = 1;
@@ -19,21 +19,24 @@ function getProductsContainer() {
 }
 
 // Create
-function createProductsPage(productsList) {
+function createProducts(products) {
   let endProductId,
-    products = "";
+    productTemplate = "";
 
-  endProductId = calculateEndPoint(startProductId, countProductsPageFunc());
+  endProductId = calcEndPoint(startProductId, CalcCountProductsOfPage());
 
-  for (const product of productsList) {
+  for (const product of products) {
     if (product.id >= startProductId && product.id < endProductId) {
-      products += `<div 
+
+      let {name, cover,description, price} = product
+
+      productTemplate += `<div 
           class="basis-56 max-w-[260px] bottom-0 hover:bottom-1 hover:shadow-xl relative duration-300 grow px-[15px] pt-[15px]
-           pb-[26px] bg-primary-500 rounded-[20px] text-white">
+            pb-[26px] bg-primary-500 rounded-[20px] text-white">
         <div
           class="md:w-[230px] md:h-[149px] rounded-xl overflow-hidden mb-2.5">
           <img
-            src="${product.cover}"
+            src="${cover}"
             alt=""
             width="230"
             height="149"/>
@@ -41,17 +44,17 @@ function createProductsPage(productsList) {
         <div>
           <h4
             class="font-semibold lg:font-bold text-xl lg:text-[25px] mb-[11px]">
-            ${product.name}
+            ${name}
           </h4>
           <p
             class="text-primary-50 text-base leading-[21px] mb-8 lg:mb-[50px]">
-            ${product.description}
+            ${description}
           </p>
         </div>
         <div class="flex justify-between items-center">
           <span
             class="text-lg lg:text-[21px] font-semibold lg:font-bold">
-            $${product.price}
+            $${price}
           </span>
           <button
             class="bg-[#A0583C] rounded-xl py-1.5 sm:py-2 w-24 sm:w-30 shadow-xs text-sm lg:text-base font-normal lg:font-medium">
@@ -62,15 +65,15 @@ function createProductsPage(productsList) {
     }
   }
 
-  return products;
+  return productTemplate;
 }
 
 // Calculate
-function calculateEndPoint(startPoint, countInPgae) {
+function calcEndPoint(startPoint, countInPgae) {
   return startPoint + countInPgae;
 }
 
-function countProductsPageFunc() {
+function CalcCountProductsOfPage() {
   let count, screenWidth;
   screenWidth = window.innerWidth;
 
@@ -93,55 +96,55 @@ function setStartProductId(newValue) {
 }
 
 // Render Products
-function renderProductsPage(productsList) {
+function renderProductsOfPage(products) {
   const productsContainer = getProductsContainer();
-  clearProductsPage(productsContainer);
+  clearInnerHtml(productsContainer);
 
-  let products = createProductsPage(productsList);
-  productsContainer.insertAdjacentHTML("beforeend", products);
+  let productsTemplate = createProducts(products);
+  productsContainer.insertAdjacentHTML("beforeend", productsTemplate);
 }
 
-function clearProductsPage(container) {
-  container.innerHTML = "";
+function clearInnerHtml(element) {
+  element.innerHTML = "";
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  renderProductsPage(productsList);
+  renderProductsOfPage(products);
 });
 
 window.addEventListener("resize", () => {
-  let newCountOfProducts = countProductsPageFunc();
+  let newCountOfProducts = CalcCountProductsOfPage();
 
   if (countProductOfPage !== newCountOfProducts) {
     countProductOfPage = newCountOfProducts;
-    renderProductsPage(productsList);
+    renderProductsOfPage(products);
   }
 });
 
 nextProductsBtn.addEventListener("click", () => {
-  let countproduct = countProductsPageFunc();
+  let countproduct = CalcCountProductsOfPage();
 
   startProductId++;
 
-  if (startProductId > productsList.length - countproduct + 1) {
+  if (startProductId > products.length - countproduct + 1) {
     startProductId = 1;
   }
 
   setStartProductId(startProductId);
 
-  renderProductsPage(productsList);
+  renderProductsOfPage(products);
 });
 
-beforeProductsBtn.addEventListener("click", () => {
-  let countProductOfPage = countProductsPageFunc();
+perviousProductsBtn.addEventListener("click", () => {
+  let countProductOfPage = CalcCountProductsOfPage();
 
   startProductId--;
 
   if (startProductId <= 0) {
-    startProductId = productsList.length + 1 - countProductOfPage;
+    startProductId = products.length + 1 - countProductOfPage;
   }
 
   setStartProductId(startProductId);
 
-  renderProductsPage(productsList);
+  renderProductsOfPage(products);
 });

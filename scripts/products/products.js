@@ -1,13 +1,13 @@
-import { products2 as products } from "../data-base.js";
+import { productsOfProductPage as products } from "../data-base.js";
 
 let $ = document,
-countProducts = setCountProducts()
+  countProducts = calcCountProductsOfPage();
 
 function getProductsContainer() {
   return $.getElementById("products__container");
 }
 
-function setCountProducts() {
+function calcCountProductsOfPage() {
   let screenWidth, countProducts;
   screenWidth = window.innerWidth;
 
@@ -16,40 +16,42 @@ function setCountProducts() {
   } else if (screenWidth > 768) {
     countProducts = 6;
   } else if (screenWidth > 567) {
-    countProducts = 4
+    countProducts = 4;
   } else {
-    countProducts = 2
+    countProducts = 2;
   }
 
-  return countProducts
+  return countProducts;
   // return 8
 }
 
 function createProducts() {
-  let productList = "",
-    countProducts = setCountProducts()
+  let productsTemplate = "",
+    countProducts = calcCountProductsOfPage();
 
   for (const product of products) {
     if (product.id <= countProducts) {
-      productList += `<div
+      let { title, img, price, description } = product;
+
+      productsTemplate += `<div
       class="flex flex-1 flex-col uppercase text-center w-40 sm:w-[200px] lg:w-[228px] 2xl:w-auto items-center"
       >
       <div class="rounded-full sm:w-48 lg:w-auto border-white border-2 shadow-xl mb-8">
-        <img src="${product.img}" alt="" />
+        <img src="${img}" alt="" />
       </div>
       <div class=" text-lg lg:text-xl">
-        <h4 class="px-1 mb-2 md:font">${product.title}</h4>
-        <span class="text-[#E04848] mb-1.5">${product.price}</span>
-        <p class="text-base">${product.description}</p>
+        <h4 class="px-1 mb-2 md:font">${title}</h4>
+        <span class="text-[#E04848] mb-1.5">${price}</span>
+        <p class="text-base">${description}</p>
       </div>
       </div>`;
     }
   }
 
-  return productList;
+  return productsTemplate;
 }
 
-function renderProductsPage() {
+function renderProductsOfPage() {
   const productsContainer = getProductsContainer();
   let products = createProducts();
 
@@ -57,14 +59,14 @@ function renderProductsPage() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  renderProductsPage();
-})
+  renderProductsOfPage();
+});
 
 window.addEventListener("resize", () => {
-  let newCountProducts = setCountProducts()
+  let newCountProducts = calcCountProductsOfPage();
 
   if (countProducts !== newCountProducts) {
-    countProducts = newCountProducts
-    renderProductsPage()
+    countProducts = newCountProducts;
+    renderProductsOfPage();
   }
-})
+});

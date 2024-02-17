@@ -8,8 +8,8 @@ let $ = document,
   nameWeekDays,
   fullNameDays;
 
-const btnNextMonth = getbtnNextMonth();
-const btnPerviousMonth = getbtnPerviousMonth();
+const btnNextMonth = getBtnNextMonth();
+const btnPerviousMonth = getBtnPreviousMonth();
 const calendarContainer = getCalendarContainer();
 
 nameWeekDays = ["Sa", "Su", "Mo", "Tu", "We", "Th", "Fr"];
@@ -44,11 +44,11 @@ thisYear = getThisYear();
 const daysOfWeek = 7;
 
 // Get elements
-function getbtnNextMonth() {
+function getBtnNextMonth() {
   return $.getElementById("next-month__btn");
 }
 
-function getbtnPerviousMonth() {
+function getBtnPreviousMonth() {
   return $.getElementById("pervious-month__btn");
 }
 
@@ -82,16 +82,16 @@ function calcCountDaysOfMonth(month) {
 // Show day info
 function showDate() {
   const container = getDateContainer();
-  let weekDay;
+  let weekday;
 
-  weekDay = calcWeekOfDay();
+  weekday = calcWeekday();
 
-  container.textContent = `Booking Coffee - on ${fullNameDays[weekDay]}, ${
+  container.textContent = `Booking Coffee - on ${fullNameDays[weekday]}, ${
     nameMonth[thisMonth - 1]
   } ${today}, ${thisYear}`;
 }
 
-function increaseThisMonth() {
+function goToNextMonth() {
   if (thisMonth < 12) {
     thisMonth++;
   } else {
@@ -100,7 +100,7 @@ function increaseThisMonth() {
   }
 }
 
-function decreaseThisMonth() {
+function goToPreviousMonth() {
   if (thisMonth > 1) {
     thisMonth--;
   } else {
@@ -125,7 +125,7 @@ function getToday() {
   return Number(today);
 }
 
-function calcWeekOfDay() {
+function calcWeekday() {
   let weekDay = today % daysOfWeek;
   return Number(weekDay);
 }
@@ -175,7 +175,8 @@ function createTableRow() {
   daysOfMonth = calcCountDaysOfMonth(thisMonth);
 
   for (let i = 1; i <= daysOfMonth; i++) {
-    isToday = i === today;
+
+    isToday = i === today ? true : false;
 
     tableItems += createTableData(i, isToday);
     if (i % daysOfWeek === 0) {
@@ -207,9 +208,11 @@ function createTableHeader() {
 }
 
 // Change value
-function changeToday(event) {
-  if (event.target.id === "day") {
-    today = Number(event.target.textContent);
+function changeDay(event) { 
+  let element = event.target
+
+  if (element.id === "day") {
+    today = Number(element.textContent);
 
     return true;
   }
@@ -241,23 +244,21 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 btnNextMonth.addEventListener("click", () => {
-  increaseThisMonth();
+  goToNextMonth();
   renderCalnedar();
   showDate();
 });
 
 btnPerviousMonth.addEventListener("click", () => {
   if ((thisMonth > getThisMonth()) | (thisYear > getThisYear())) {
-    decreaseThisMonth();
+    goToPreviousMonth();
     renderCalnedar();
     showDate();
-
-    btnPerviousMonth.classList.add();
   }
 });
 
 calendarContainer.addEventListener("click", (event) => {
-  if (changeToday(event)) {
+  if (changeDay(event)) {
     renderCalnedar();
     showDate();
   }

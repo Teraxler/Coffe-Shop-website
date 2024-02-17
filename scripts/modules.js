@@ -1,12 +1,12 @@
 "use strict";
 
 let $ = document,
-  menuVisible,
+  isMenuVisible,
   startProductId,
   startCommentId;
 
 // Initial value
-menuVisible = false;
+isMenuVisible = false;
 startProductId = 1;
 startCommentId = 1;
 
@@ -41,13 +41,14 @@ function changeStartCommentId(newValue) {
 }
 
 function changeMenuVisibility() {
-  if (!menuVisible) {
-    showMenu();
-  } else {
-    hideMenu();
-  }
+  // if (!isMenuVisible) {
+  //   showMenu();
+  // } else {
+  //   hideMenu();
+  // }
+  isMenuVisible ? hideMenu() : showMenu()
 
-  menuVisible = !menuVisible;
+  isMenuVisible = !isMenuVisible;
 }
 
 function showMenu() {
@@ -65,7 +66,7 @@ function calculateEndPoint(startPoint, countInPgae) {
   return startPoint + countInPgae;
 }
 
-function countProductsPage() {
+function CalcCountProductsOfPage() {
   let count, screenWidth;
   screenWidth = window.innerWidth;
 
@@ -82,7 +83,7 @@ function countProductsPage() {
   return count;
 }
 
-function countCommentsPage() {
+function CalcCountCommentsOfPage() {
   let count, screenWidth;
   screenWidth = window.innerWidth;
 
@@ -113,7 +114,7 @@ function createNavigationLinks(navigationLinksArray) {
 }
 
 function createProductsPage(productsList) {
-  let endProductId = calculateEndPoint(startProductId, countProductsPage());
+  let endProductId = calculateEndPoint(startProductId, CalcCountProductsOfPage());
   let products = "";
 
   for (const product of productsList) {
@@ -157,7 +158,7 @@ function createProductsPage(productsList) {
 }
 
 function createCommentsPage(commentsListArray) {
-  let endCommentId = calculateEndPoint(startCommentId, countCommentsPage());
+  let endCommentId = calculateEndPoint(startCommentId, CalcCountCommentsOfPage());
   let comments = "";
 
   for (const comment of commentsListArray) {
@@ -255,8 +256,8 @@ function addCommentsPage(commentsListArray) {
 export {
   addMenuLinks,
   addFooterMenuLinks,
-  countProductsPage,
-  countCommentsPage,
+  CalcCountProductsOfPage,
+  CalcCountCommentsOfPage,
   changeMenuVisibility,
   addProductsPage,
   addCommentsPage,

@@ -11,30 +11,30 @@ function getFooterNavigationContainer() {
 
 // Create
 function createNavigationLinks(navigationLinks) {
-  let linksContainer = "";
+  let linksTemplate = "";
 
   for (const link of navigationLinks) {
-    linksContainer += `<li>
+    linksTemplate += `<li>
               <a href="${link.href}">
                 ${link.title}
               </a>
             </li>`;
   }
 
-  return linksContainer;
+  return linksTemplate;
 }
 
 // Render Footer Links
 function renderFooterNavigationLinks(navigationLinks) {
   const footerNavItemsContainer = getFooterNavigationContainer();
-  clearFooterLinks(footerNavItemsContainer);
+  clearInnerHtml(footerNavItemsContainer);
 
   let navigationlinks = createNavigationLinks(navigationLinks);
   footerNavItemsContainer.insertAdjacentHTML("beforeend", navigationlinks);
 }
 
-function clearFooterLinks(container) {
-  container.innerHTML = "";
+function clearInnerHtml(element) {
+  element.innerHTML = "";
 }
 
 window.addEventListener("DOMContentLoaded", () => {

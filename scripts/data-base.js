@@ -1,6 +1,6 @@
 "use strict";
 
-const products = [
+const homePageProducts = [
   {
     id: 1,
     name: "Cappacino",
@@ -143,7 +143,7 @@ const navigationLinks = [
   // {id: 7, title: ""},
 ];
 
-const products2 = [
+const productsOfProductPage = [
   {
     id: 1,
     title: "Sumatramandheling",
@@ -318,4 +318,4 @@ const persianNumbers = [
   /۹/g,
 ];
 
-export { products, products2, comments, navigationLinks, persianNumbers, menus };
+export { homePageProducts, productsOfProductPage, comments, navigationLinks, persianNumbers, menus };

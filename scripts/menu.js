@@ -3,10 +3,10 @@
 import { navigationLinks } from "../scripts/data-base.js";
 
 let $ = document,
-  menuVisible;
+  isMenuVisible;
 
 // Initial value
-menuVisible = false;
+isMenuVisible = false;
 
 // Get Elments
 const toggleMenu = $.getElementById("toggle-menu");
@@ -22,13 +22,9 @@ function getMenuItemsContainer() {
 
 // Change
 function toggleMenuVisibility() {
-  if (!menuVisible) {
-    showMenu();
-  } else {
-    hideMenu();
-  }
+  isMenuVisible ? hideMenu() : showMenu()
 
-  menuVisible = !menuVisible;
+  isMenuVisible = !isMenuVisible;
 }
 
 function showMenu() {
@@ -59,13 +55,13 @@ function createNavigationLinks(navigationLinks) {
 // Render
 function renderMenuNavigationLinks(navigationLinks) {
   const menuItemsContainer = getMenuItemsContainer();
-  clearInnerHTML(menuItemsContainer);
+  clearInnerHtml(menuItemsContainer);
 
   let navlinks = createNavigationLinks(navigationLinks);
   menuItemsContainer.insertAdjacentHTML("beforeend", navlinks);
 }
 
-function clearInnerHTML(element) {
+function clearInnerHtml(element) {
   element.innerHTML = "";
 }
 
@@ -73,6 +69,4 @@ window.addEventListener("DOMContentLoaded", () => {
   renderMenuNavigationLinks(navigationLinks);
 });
 
-toggleMenu.addEventListener("click", () => {
-  toggleMenuVisibility();
-});
+toggleMenu.addEventListener("click", toggleMenuVisibility);
