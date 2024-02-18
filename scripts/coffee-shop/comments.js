@@ -120,6 +120,36 @@ function removeClass(className) {
   element?.classList.remove(className);
 }
 
+function commentsPaginationHandler(event) {
+  let newStartCommentId,
+    element = event.target;
+
+  if (element.id === "1" || element.id === "2" || element.id === "3") {
+    removeClass("comments-navigation__active");
+    addClass(element, "comments-navigation__active");
+
+    switch (element.id) {
+      case "1":
+        newStartCommentId = 1;
+        break;
+      case "2":
+        newStartCommentId = calcCountCommentsOfPage();
+        break;
+      case "3":
+        newStartCommentId = calcCountCommentsOfPage() * 2;
+        break;
+      default:
+        break;
+    }
+  }
+
+  if (newStartCommentId) {
+    startCommentId = newStartCommentId;
+    // setStartCommentId(newStartCommentId);
+    renderCommentsPage(comments);
+  }
+}
+
 // Render Comments
 function renderCommentsPage(comments) {
   const commentsContainer = getCommentsContainer();
@@ -143,35 +173,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }, 5000);
 });
 
-commentsPagination.addEventListener("click", (event) => {
-  let newStartCommentId,
-    element = event.target;
-
-  if (element.id === "1" || element.id === "2" || element.id === "3") {
-    removeClass("comments-navigation__active");
-    addClass(event.target, "comments-navigation__active");
-
-    switch (element.id) {
-      case "1":
-        newStartCommentId = 1;
-        break;
-      case "2":
-        newStartCommentId = calcCountCommentsOfPage();
-        break;
-      case "3":
-        newStartCommentId = calcCountCommentsOfPage() * 2;
-        break;
-      default:
-        break;
-    }
-  }
-
-  if (newStartCommentId) {
-    startCommentId = newStartCommentId;
-    // setStartCommentId(newStartCommentId);
-    renderCommentsPage(comments);
-  }
-});
+commentsPagination.addEventListener("click", commentsPaginationHandler);
 
 window.addEventListener("resize", () => {
   let newCountOfComments = calcCountCommentsOfPage();
