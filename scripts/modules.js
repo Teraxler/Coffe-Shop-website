@@ -41,8 +41,13 @@ function changeStartCommentId(newValue) {
 }
 
 function changeMenuVisibility() {
+  // if (!isMenuVisible) {
+  //   showMenu();
+  // } else {
+  //   hideMenu();
+  // }
   isMenuVisible ? hideMenu() : showMenu()
-  
+
   isMenuVisible = !isMenuVisible;
 }
 
@@ -78,7 +83,7 @@ function CalcCountProductsOfPage() {
   return count;
 }
 
-function calcCountCommentsOfPage() {
+function CalcCountCommentsOfPage() {
   let count, screenWidth;
   screenWidth = window.innerWidth;
 
@@ -114,16 +119,13 @@ function createProductsPage(productsList) {
 
   for (const product of productsList) {
     if (product.id >= startProductId && product.id < endProductId) {
-
-      let {cover, name, description, price}  = product
-
       products += `<div 
           class="basis-56 max-w-[260px] bottom-0 hover:bottom-1 hover:shadow-xl relative duration-300 grow px-[15px] pt-[15px]
            pb-[26px] bg-primary-500 rounded-[20px] text-white">
         <div
           class="md:w-[230px] md:h-[149px] rounded-xl overflow-hidden mb-2.5">
           <img
-            src="${cover}"
+            src="${product.cover}"
             alt=""
             width="230"
             height="149"/>
@@ -131,17 +133,17 @@ function createProductsPage(productsList) {
         <div>
           <h4
             class="font-semibold lg:font-bold text-xl lg:text-[25px] mb-[11px]">
-            ${name}
+            ${product.name}
           </h4>
           <p
             class="text-primary-50 text-base leading-[21px] mb-8 lg:mb-[50px]">
-            ${description}
+            ${product.description}
           </p>
         </div>
         <div class="flex justify-between items-center">
           <span
             class="text-lg lg:text-[21px] font-semibold lg:font-bold">
-            $${price}
+            $${product.price}
           </span>
           <button
             class="bg-[#A0583C] rounded-xl py-1.5 sm:py-2 w-24 sm:w-30 shadow-xs text-sm lg:text-base font-normal lg:font-medium">
@@ -156,20 +158,17 @@ function createProductsPage(productsList) {
 }
 
 function createCommentsPage(commentsListArray) {
-  let endCommentId = calculateEndPoint(startCommentId, calcCountCommentsOfPage());
+  let endCommentId = calculateEndPoint(startCommentId, CalcCountCommentsOfPage());
   let comments = "";
 
   for (const comment of commentsListArray) {
     if (comment.id >= startCommentId && comment.id < endCommentId) {
-
-      let {photo, title, name, timePass, description} = comment
-
       comments += `<div
         class="flex basis-72 flex-grow max-w-xs flex-col items-center lg:h-80 px-7 xl:h-[310px] bg-primary-700 rounded-[5px]">
         <div
           class="w-20 h-20 flex flex-shrink-0 rounded-full overflow-hidden relative -top-10">
           <img
-            src="${photo}"
+            src="${comment.photo}"
             alt=""
             width="80"
             height="80"/>
@@ -197,19 +196,19 @@ function createCommentsPage(commentsListArray) {
           </div>
           <h5
             class="text-white lg:text-3xl lg:text-center xl:text-[32px] lg:font-semibold xl:font-bold leading-[48px]">
-            ${title}
+            ${comment.title}
           </h5>
           <p
           class="text-center text-[#D3CECE] font-normal lg:text-lg lx:text-xl">
-          ${description}
+          ${comment.description}
         </p>
           <div
             class="flex flex-col items-center mt-[22px] lg:font-semibold xl:font-bold">
             <p class="text-[#54DD8B] text-base leading-6">
-              ${name}
+              ${comment.name}
             </p>
             <span class="text-[#CACACA] text-[15px] leading-6">
-              ${timePass}
+              ${comment.timePass}
             </span>
           </div>
         </div>
@@ -258,7 +257,7 @@ export {
   addMenuLinks,
   addFooterMenuLinks,
   CalcCountProductsOfPage,
-  calcCountCommentsOfPage,
+  CalcCountCommentsOfPage,
   changeMenuVisibility,
   addProductsPage,
   addCommentsPage,

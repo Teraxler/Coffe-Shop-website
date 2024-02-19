@@ -175,6 +175,7 @@ function createTableRow() {
   daysOfMonth = calcCountDaysOfMonth(thisMonth);
 
   for (let i = 1; i <= daysOfMonth; i++) {
+
     isToday = i === today ? true : false;
 
     tableItems += createTableData(i, isToday);
@@ -207,8 +208,8 @@ function createTableHeader() {
 }
 
 // Change value
-function changeDay(event) {
-  let element = event.target;
+function changeDay(event) { 
+  let element = event.target
 
   if (element.id === "day") {
     today = Number(element.textContent);
