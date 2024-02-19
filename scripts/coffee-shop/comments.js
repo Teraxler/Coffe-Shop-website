@@ -1,12 +1,12 @@
-import { comments as commentsList } from "../data-base.js";
+import { comments } from "../data-base.js";
 
 let $ = document,
-  countCommentsPage,
+  countCommentsOfPage,
   startCommentId;
 
 // Initial value
 startCommentId = 1;
-countCommentsPage = countCommentsPageFunc();
+countCommentsOfPage = calcCountCommentsOfPage();
 
 // Get elements
 const commentsPagination = $.getElementById("comments-pagination");
@@ -22,11 +22,11 @@ function getCommentsContainer() {
 // }
 
 // Calculate
-function calculateEndPoint(startPoint, countInPgae) {
-  return startPoint + countInPgae;
+function calculateEndPoint(startPoint, countOfPgae) {
+  return startPoint + countOfPgae;
 }
 
-function countCommentsPageFunc() {
+function calcCountCommentsOfPage() {
   let count, screenWidth;
   screenWidth = window.innerWidth;
 
@@ -42,20 +42,22 @@ function countCommentsPageFunc() {
 }
 
 // Create
-function createCommentsPage(commentsList) {
+function createCommentsPage(comments) {
   let endCommentId,
-    comments = "";
+    commentsTemplate = "";
 
-  endCommentId = calculateEndPoint(startCommentId, countCommentsPageFunc());
+  endCommentId = calculateEndPoint(startCommentId, calcCountCommentsOfPage());
 
-  for (const comment of commentsList) {
+  for (const comment of comments) {
     if (comment.id >= startCommentId && comment.id < endCommentId) {
-      comments += `<div
+      let { photo, title, name, description, timePass } = comment;
+
+      commentsTemplate += `<div
         class="flex basis-72 flex-grow max-w-xs flex-col items-center lg:h-80 px-7 xl:h-[310px] bg-primary-700 rounded-[5px]">
         <div
           class="w-20 h-20 flex flex-shrink-0 rounded-full overflow-hidden relative -top-10">
           <img
-            src="${comment.photo}"
+            src="${photo}"
             alt=""
             width="80"
             height="80"/>
@@ -83,19 +85,19 @@ function createCommentsPage(commentsList) {
           </div>
           <h5
             class="text-white md:text-xl lg:text-3xl text-center xl:text-[32px] lg:font-semibold xl:font-bold md:leading-10 lg:leading-[48px]">
-            ${comment.title}
+            ${title}
           </h5>
           <p
           class="text-center text-[#D3CECE] font-normal text-base lg:text-lg lx:text-xl">
-          ${comment.description}
+          ${description}
         </p>
           <div
             class="flex flex-col items-center mt-[22px] lg:font-semibold xl:font-bold">
             <p class="text-[#54DD8B] text-base leading-6">
-              ${comment.name}
+              ${name}
             </p>
             <span class="text-[#CACACA] text-[15px] leading-6">
-              ${comment.timePass}
+              ${timePass}
             </span>
           </div>
         </div>
@@ -103,62 +105,81 @@ function createCommentsPage(commentsList) {
     }
   }
 
-  return comments;
+  return commentsTemplate;
 }
 
-function clearCommentsPage(container) {
-  container.innerHTML = "";
+function clearInnerHtml(element) {
+  element.innerHTML = "";
+}
+function addClass(element, className) {
+  element?.classList.add(className);
 }
 
-// Render Comments
-function renderCommentsPage(commentsList) {
-  const commentsContainer = getCommentsContainer();
-  clearCommentsPage(commentsContainer);
-
-  let comments = createCommentsPage(commentsList);
-  commentsContainer.insertAdjacentHTML("beforeend", comments);
+function removeClass(className) {
+  let element = document.getElementsByClassName(className)[0];
+  element?.classList.remove(className);
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  renderCommentsPage(commentsList);
+function commentsPaginationHandler(event) {
+  let newStartCommentId,
+    element = event.target;
 
-  setInterval(() => {
-    if (startCommentId <= commentsList.length - countCommentsPage) {
-      startCommentId++;
-    } else {
-      startCommentId = 1; // New begin
+  if (element.id === "1" || element.id === "2" || element.id === "3") {
+    removeClass("comments-navigation__active");
+    addClass(element, "comments-navigation__active");
+
+    switch (element.id) {
+      case "1":
+        newStartCommentId = 1;
+        break;
+      case "2":
+        newStartCommentId = calcCountCommentsOfPage();
+        break;
+      case "3":
+        newStartCommentId = calcCountCommentsOfPage() * 2;
+        break;
+      default:
+        break;
     }
-
-    renderCommentsPage(commentsList);
-  }, 5000);
-});
-
-commentsPagination.addEventListener("click", (event) => {
-  let newStartCommentId;
-
-  if (event.target.id === "1") {
-    newStartCommentId = 1;
-    event.target.style.fill = "#8C8C8C";
-  } else if (event.target.id === "2") {
-    newStartCommentId = countCommentsPageFunc();
-    event.target.style.fill = "#8C8C8C";
-  } else if (event.target.id === "3") {
-    newStartCommentId = countCommentsPageFunc() * 2;
-    event.target.style.fill = "#8C8C8C";
   }
 
   if (newStartCommentId) {
     startCommentId = newStartCommentId;
     // setStartCommentId(newStartCommentId);
-    renderCommentsPage(commentsList);
+    renderCommentsPage(comments);
   }
+}
+
+// Render Comments
+function renderCommentsPage(comments) {
+  const commentsContainer = getCommentsContainer();
+  clearInnerHtml(commentsContainer);
+
+  let commentsTemplate = createCommentsPage(comments);
+  commentsContainer.insertAdjacentHTML("beforeend", commentsTemplate);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  renderCommentsPage(comments);
+
+  setInterval(() => {
+    if (startCommentId <= comments.length - countCommentsOfPage) {
+      startCommentId++;
+    } else {
+      startCommentId = 1; // New begin
+    }
+
+    renderCommentsPage(comments);
+  }, 5000);
 });
 
-window.addEventListener("resize", () => {
-  let newCountOfComments = countCommentsPageFunc();
+commentsPagination.addEventListener("click", commentsPaginationHandler);
 
-  if (countCommentsPage !== newCountOfComments) {
-    countCommentsPage = newCountOfComments;
-    renderCommentsPage(commentsList);
+window.addEventListener("resize", () => {
+  let newCountOfComments = calcCountCommentsOfPage();
+
+  if (countCommentsOfPage !== newCountOfComments) {
+    countCommentsOfPage = newCountOfComments;
+    renderCommentsPage(comments);
   }
 });

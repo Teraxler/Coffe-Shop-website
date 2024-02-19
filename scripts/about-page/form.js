@@ -111,9 +111,9 @@ function inputsValidation() {
 function showAlertMessage(message, isSuccessfull) {
   const alertElement = getAlertElement();
 
-  setColorAlert(isSuccessfull);
+  setStatusAlert(isSuccessfull);
 
-  alertElement.innerText = message;
+  alertElement.textContent = message;
   alertElement.parentElement.style.right = "0";
 
   setTimerAlert(3000);
@@ -132,7 +132,7 @@ function setTimerAlert(seconds) {
   }, seconds);
 }
 
-function setColorAlert(isSuccessfull) {
+function setStatusAlert(isSuccessfull) {
   const alertElement = getAlertElement();
 
   if (isSuccessfull) {

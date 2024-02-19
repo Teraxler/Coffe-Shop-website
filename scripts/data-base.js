@@ -1,10 +1,10 @@
 "use strict";
 
-const products = [
+const homePageProducts = [
   {
     id: 1,
     name: "Cappacino",
-    cover: "../images/coffee-shop-page/cappacino.png",
+    cover: "./images/coffee-shop-page/cappacino.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
     price: "8.601",
@@ -12,7 +12,7 @@ const products = [
   {
     id: 2,
     name: "Mocha",
-    cover: "../images/coffee-shop-page/mocha.png",
+    cover: "./images/coffee-shop-page/mocha.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
     price: "9.202",
@@ -20,7 +20,7 @@ const products = [
   {
     id: 3,
     name: "Latte",
-    cover: "../images/coffee-shop-page/latte.png",
+    cover: "./images/coffee-shop-page/latte.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
     price: "11.403",
@@ -28,7 +28,7 @@ const products = [
   {
     id: 4,
     name: "Cold Java",
-    cover: "../images/coffee-shop-page/cold-java.png",
+    cover: "./images/coffee-shop-page/cold-java.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
     price: "6.404",
@@ -36,7 +36,7 @@ const products = [
   {
     id: 5,
     name: "Cappacino",
-    cover: "../images/coffee-shop-page/cappacino.png",
+    cover: "./images/coffee-shop-page/cappacino.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
     price: "8.605",
@@ -44,7 +44,7 @@ const products = [
   {
     id: 6,
     name: "Mocha",
-    cover: "../images/coffee-shop-page/mocha.png",
+    cover: "./images/coffee-shop-page/mocha.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
     price: "9.206",
@@ -52,7 +52,7 @@ const products = [
   {
     id: 7,
     name: "Latte",
-    cover: "../images/coffee-shop-page/latte.png",
+    cover: "./images/coffee-shop-page/latte.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
     price: "11.407",
@@ -60,7 +60,7 @@ const products = [
   {
     id: 8,
     name: "Cold Java",
-    cover: "../images/coffee-shop-page/cold-java.png",
+    cover: "./images/coffee-shop-page/cold-java.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
     price: "6.408",
@@ -68,7 +68,7 @@ const products = [
   {
     id: 9,
     name: "Cappacino",
-    cover: "../images/coffee-shop-page/cappacino.png",
+    cover: "./images/coffee-shop-page/cappacino.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
     price: "8.609",
@@ -81,7 +81,7 @@ const comments = [
     id: 1,
     name: "Mrs Catherine White 1",
     gender: "female",
-    photo: "../images/coffee-shop-page/ellipse 39.jpg",
+    photo: "./images/coffee-shop-page/ellipse 39.jpg",
     title: "As good as advertised",
     description: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit,”",
     timePass: "44 Hours Ago",
@@ -90,7 +90,7 @@ const comments = [
     id: 2,
     name: "Mrs Catherine White 2",
     gender: "female",
-    photo: "../images/coffee-shop-page/ellipse 38.jpg",
+    photo: "./images/coffee-shop-page/ellipse 38.jpg",
     title: "As good as advertised",
     description: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit,”",
     timePass: "44 Hours Ago",
@@ -99,7 +99,7 @@ const comments = [
     id: 3,
     name: "Mrs Catherine White 3",
     gender: "female",
-    photo: "../images/coffee-shop-page/ellipse 39.jpg",
+    photo: "./images/coffee-shop-page/ellipse 39.jpg",
     title: "As good as advertised",
     description: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit,”",
     timePass: "44 Hours Ago",
@@ -108,7 +108,7 @@ const comments = [
     id: 4,
     name: "Mrs Catherine White 4",
     gender: "female",
-    photo: "../images/coffee-shop-page/ellipse 39.jpg",
+    photo: "./images/coffee-shop-page/ellipse 39.jpg",
     title: "As good as advertised",
     description: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit,”",
     timePass: "44 Hours Ago",
@@ -117,7 +117,7 @@ const comments = [
     id: 5,
     name: "Mrs Catherine White 5",
     gender: "female",
-    photo: "../images/coffee-shop-page/ellipse 39.jpg",
+    photo: "./images/coffee-shop-page/ellipse 39.jpg",
     title: "As good as advertised",
     description: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit,”",
     timePass: "44 Hours Ago",
@@ -126,7 +126,7 @@ const comments = [
     id: 6,
     name: "Mr John White 6",
     gender: "male",
-    photo: "../images/coffee-shop-page/ellipse 38.jpg",
+    photo: "./images/coffee-shop-page/ellipse 38.jpg",
     title: "As good as advertised",
     description: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit,”",
     timePass: "44 Hours Ago",
@@ -143,7 +143,7 @@ const navigationLinks = [
   // {id: 7, title: ""},
 ];
 
-const products2 = [
+const productsOfProductPage = [
   {
     id: 1,
     title: "Sumatramandheling",
@@ -318,4 +318,4 @@ const persianNumbers = [
   /۹/g,
 ];
 
-export { products, products2, comments, navigationLinks, persianNumbers, menus };
+export { homePageProducts, productsOfProductPage, comments, navigationLinks, persianNumbers, menus };

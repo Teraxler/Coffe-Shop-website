@@ -27,3 +27,6 @@
   letter-spacing: -1.575px;
 }
 
+.comments-navigation__active{
+  fill: #8c8c8c;
+}

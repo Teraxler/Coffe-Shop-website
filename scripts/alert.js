@@ -1,7 +1,7 @@
-let alertIntervalId;
+let alertSetTimeoutId;
 
 // Initial value
-alertIntervalId = null
+alertSetTimeoutId = null
 
 // Get elements
 function getAlertElement() {
@@ -12,9 +12,9 @@ function getAlertElement() {
 function showAlertMessage(message, isSuccessfull) {
   const alertElement = getAlertElement();
 
-  setColorAlert(isSuccessfull);
+  setStatusAlert(isSuccessfull);
 
-  alertElement.innerText = message;
+  alertElement.textContent = message;
   alertElement.parentElement.style.right = "0";
 
   setTimerAlert(3000);
@@ -23,17 +23,15 @@ function showAlertMessage(message, isSuccessfull) {
 function setTimerAlert(seconds) {
   const alertElement = getAlertElement();
 
-  if (alertIntervalId) {
-    clearInterval(alertIntervalId);
-  }
+  alertSetTimeoutId ? clearInterval(alertSetTimeoutId) : null;
 
-  alertIntervalId = setTimeout(() => {
+  alertSetTimeoutId = setTimeout(() => {
     alertElement.parentElement.style.right = "-400px";
-    alertIntervalId = null;
+    alertSetTimeoutId = null;
   }, seconds);
 }
 
-function setColorAlert(isSuccessfull) {
+function setStatusAlert(isSuccessfull) {
   const alertElement = getAlertElement();
 
   if (isSuccessfull) {

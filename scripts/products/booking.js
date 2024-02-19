@@ -1,6 +1,4 @@
-console.time();
-
-import { today as selectedDay, thisMonth, thisYear } from "./calendar.js";
+import { today as selectedDay } from "./calendar.js";
 import { thisMonth as selectedMonth } from "./calendar.js";
 import { thisYear as selectedYear } from "./calendar.js";
 
@@ -15,7 +13,7 @@ let $ = document,
 // Elements
 const btnPlus = getBtnPlus();
 const btnMinus = getBtnMinus();
-const bokkingInput = getBookingInput();
+const bookingInput = getBookingInput();
 const btnNext = getBtnNext();
 
 // Initial value
@@ -47,9 +45,9 @@ function getBtnNext() {
 function showAlertMessage(message, isSuccessfull = false) {
   const alertElement = getAlertElement();
 
-  setColorAlert(isSuccessfull);
+  setStatusAlert(isSuccessfull);
 
-  alertElement.innerText = message;
+  alertElement.textContent = message;
   alertElement.parentElement.style.right = "0";
 
   setTimerAlert(3000);
@@ -68,26 +66,13 @@ function setTimerAlert(seconds) {
   }, seconds);
 }
 
-function setColorAlert(isSuccessfull) {
+function setStatusAlert(isSuccessfull) {
   const alertElement = getAlertElement();
 
   if (isSuccessfull) {
     alertElement.style.color = "#5cb85c"; // Success color
   } else {
     alertElement.style.color = "#d9534f"; // Danger color
-  }
-}
-
-function checkCountCoffee(count) {
-  if (isNaN(count)) {
-    value = 0;
-    showAlertMessage("Please enter a number!!");
-  } else if (count < 0) {
-    value = 0;
-    showAlertMessage("Please enter a number between (0, 50)");
-  } else if (count > maxBookingCount) {
-    value = maxBookingCount;
-    showAlertMessage("Please enter a number between (0, 50)");
   }
 }
 
@@ -107,21 +92,18 @@ function checkCountCoffeeValue(value) {
   return value;
 }
 
-function isValidDate() {
+function isDateValid() {
   let isValid = false;
 
-  if (
-    (selectedDay >= getToday()) &
-    (selectedMonth >= getThisMonth()) &
-    (selectedYear >= getThisYear())
-  ) {
+  if (selectedYear > getThisYear()) {
+    isValid = true;
+  } else if (selectedYear === getThisYear() && selectedMonth > getThisMonth()) {
     isValid = true;
   } else if (
-    (selectedMonth > getThisMonth()) &
-    (selectedYear >= getThisYear())
+    selectedYear === getThisYear() &&
+    selectedMonth === getThisMonth() &&
+    selectedDay >= getToday()
   ) {
-    isValid = true;
-  } else if (selectedYear > getThisYear()) {
     isValid = true;
   }
 
@@ -129,19 +111,13 @@ function isValidDate() {
 }
 
 // Local storage
-function setOnLocalStorage(key, value) {
+function setInLocalStorage(key, value) {
   localStorage.setItem(key, value);
 }
 
-function getOnLocalStorage(key) {
+function getDataFromLocalStorage(key) {
   return localStorage.getItem(key);
 }
-
-// function checkDate() {
-//   const year =
-//   const month =
-//   const day =
-// }
 
 // Events
 btnPlus.addEventListener("click", () => {
@@ -158,42 +134,31 @@ btnMinus.addEventListener("click", () => {
   bookingInput.value = checkCountCoffeeValue(bookingCount - 1);
 });
 
-bokkingInput.addEventListener("blur", (event) => {
+bookingInput.addEventListener("blur", (event) => {
   event.target.value = checkCountCoffeeValue(event.target.value);
 });
 
 btnNext.addEventListener("click", () => {
-  const bokkingInput = getBookingInput();
+  const bookingInput = getBookingInput();
 
   let countAndDayBooking = {
-    count: bokkingInput.value,
+    count: bookingInput.value,
     day: selectedDay,
     month: selectedMonth,
     year: selectedYear,
   };
 
-  if (bokkingInput.value < 1) {
+  if (bookingInput.value < 1) {
     showAlertMessage("Please enter count you want reserve.", false);
   } else {
-    if (isValidDate()) {
-      setOnLocalStorage("contBooking", JSON.stringify(countAndDayBooking));
+    if (isDateValid()) {
+      setInLocalStorage("contBooking", JSON.stringify(countAndDayBooking));
 
       showAlertMessage("Your booking is done.", true);
     } else {
-      // localStorage.clear();
-
       showAlertMessage("Please enter a valid day!", false);
     }
-
-    // location.href = "https://coffee-shop/basket/"
-    // location.reload()
-    // location.search
   }
 
-  console.warn(getOnLocalStorage("contBooking"));
+  console.warn(getDataFromLocalStorage("contBooking"));
 });
-
-console.timeEnd();
-
-console.log(window.location);
-console.log(window.history);
